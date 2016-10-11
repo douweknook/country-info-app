@@ -1,7 +1,8 @@
 var fs = require('fs')
+var fileReader = require(__dirname+'/modules/json-file-reader')
 
 // Read and parse data from JSON file
-var getData = function(filename, countryName) {
+var getData = function(filename) {
 	// Read data file in as string
 	fs.readFile(filename, 'utf-8', function(err, data) {
 		if (err) {
@@ -11,7 +12,7 @@ var getData = function(filename, countryName) {
 		countriesData = JSON.parse(data)
 		// Go over data to find required country info
 		for (var i = 0; i < countriesData.length; i++) {
-			if (countriesData[i].name == countryName) {
+			if (countriesData[i].name == process.argv[2]) {
 				// Country: <name>
 				console.log("Country: "+countriesData[i].name)
 				// Top Level Domain: <topLevelDomain>
@@ -20,5 +21,5 @@ var getData = function(filename, countryName) {
 		}
 	})
 }
-
-getData("countries.json", process.argv[2])
+var filename = "/countries.json"
+getData(__dirname+"/countries.json")
