@@ -1,3 +1,5 @@
+// SOLUTION FOR PART ONE
+
 var fs = require('fs')
 var fileReader = require(__dirname+'/modules/json-file-reader')
 
@@ -21,5 +23,5 @@ var getData = function(filename) {
 		}
 	})
 }
-var filename = "/countries.json"
+
 getData(__dirname+"/countries.json")
